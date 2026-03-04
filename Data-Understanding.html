@@ -1871,3 +1871,198 @@ By Intan Resti Haslindawati
   </footer>
   </body>
 </html>
+## Jarak Data Campuran (Mixed-Type)
+
+---
+
+## 3.15 Pengukuran Jarak pada Data Campuran — Palmer Penguins
+
+Dataset **Palmer Penguins** dipilih sebagai data campuran (*mixed-type*) untuk tugas ini karena mengandung **keempat tipe data sekaligus**: numerik, ordinal, nominal/kategorikal, dan biner. Dataset diperoleh dari dua sumber: file CSV lokal (`penguins_lter.csv`) dan tabel PostgreSQL (`penguins_lter` di database `Penguins`).
+
+### 3.15.1 Profil Dataset Palmer Penguins
+
+Dataset **Palmer Penguins** berasal dari penelitian ekologi di **Palmer Station, Antartika** oleh Dr. Kristen Gorman dan LTER (Long-Term Ecological Research) Network. Data ini mencatat pengamatan morfologi dan isotop pada tiga spesies penguin: *Adelie*, *Chinstrap*, dan *Gentoo* yang tersebar di tiga pulau: Torgersen, Biscoe, dan Dream. Dataset ini sangat populer sebagai alternatif dataset Iris untuk eksplorasi data. Terdapat **344 baris** dan **17 kolom** (di luar `penguin_id`).
+
+```python
+df_penguins = pd.read_csv("DataCampuranPertemuan3/Penguins/penguins_lter.csv")
+df_penguins.head()
+```
+
+**Sampel 5 baris pertama:**
+
+| studyName | Species | Region | Island | Stage | Clutch Completion | Culmen Length (mm) | Culmen Depth (mm) | Flipper Length (mm) | Body Mass (g) | Sex | Delta 15 N | Delta 13 C |
+|:---------:|---------|--------|--------|-------|:-----------------:|:------------------:|:-----------------:|:-------------------:|:-------------:|:---:|:----------:|:----------:|
+| PAL0708 | Adelie Penguin | Anvers | Torgersen | Adult, 1 Egg Stage | Yes | 39.1 | 18.7 | 181 | 3750 | MALE | *(null)* | *(null)* |
+| PAL0708 | Adelie Penguin | Anvers | Torgersen | Adult, 1 Egg Stage | Yes | 39.5 | 17.4 | 186 | 3800 | FEMALE | 8.95 | -24.69 |
+| PAL0708 | Adelie Penguin | Anvers | Torgersen | Adult, 1 Egg Stage | Yes | 40.3 | 18.0 | 195 | 3250 | FEMALE | 8.37 | -25.33 |
+| PAL0708 | Adelie Penguin | Anvers | Torgersen | Adult, 1 Egg Stage | Yes | *(null)* | *(null)* | *(null)* | *(null)* | *(null)* | *(null)* | *(null)* |
+| PAL0708 | Adelie Penguin | Anvers | Torgersen | Adult, 1 Egg Stage | Yes | 36.7 | 19.3 | 193 | 3450 | FEMALE | 8.77 | -25.32 |
+
+### 3.15.2 Identifikasi Tipe Data per Kolom (Mixed-Type)
+
+Kolom `penguin_id`, `individual_id`, `date_egg`, dan `comments` di-drop karena bersifat identifier, tanggal, atau teks bebas. Sisa kolom dikelompokkan berdasarkan tipe data:
+
+| Kolom | Tipe Data | Nilai / Range | Metrik Jarak yang Sesuai |
+|-------|-----------|---------------|:------------------------:|
+| `culmen_length_mm` | **Numerik** (float) | 32.1 – 59.6 mm (panjang paruh penguin) | Euclidean / Manhattan |
+| `culmen_depth_mm` | **Numerik** (float) | 13.1 – 21.5 mm (kedalaman paruh penguin) | Euclidean / Manhattan |
+| `flipper_length_mm` | **Numerik** (float) | 172 – 231 mm (panjang sirip penguin) | Euclidean / Manhattan |
+| `body_mass_g` | **Numerik** (int) | 2.700 – 6.300 g (massa tubuh penguin) | Euclidean / Manhattan |
+| `delta_15_n` | **Numerik** (float) | 7.63 – 10.03 (rasio isotop nitrogen δ15N) | Euclidean / Manhattan |
+| `delta_13_c` | **Numerik** (float) | -26.32 – -23.79 (rasio isotop karbon δ13C) | Euclidean / Manhattan |
+| `sample_number` | **Ordinal** (int) | 1 – 152 (nomor urut sampel dalam kohort) | Spearman |
+| `stage` | **Ordinal** (string) | Adult, 1 Egg Stage (tahap reproduksi) | Spearman |
+| `species` | **Nominal** | Adelie / Chinstrap / Gentoo (spesies penguin) | Hamming |
+| `region` | **Nominal** | Anvers (wilayah geografis penelitian) | Hamming |
+| `island` | **Nominal** | Torgersen / Biscoe / Dream (pulau) | Hamming |
+| `study_name` | **Nominal** | PAL0708, PAL0809, PAL0910 (tahun riset) | Hamming |
+| `sex` | **Biner** | MALE / FEMALE | Hamming |
+| `clutch_completion` | **Biner** | Yes / No (apakah sarang lengkap 2 telur) | Hamming |
+
+> **Kesimpulan:** Dataset Palmer Penguins adalah contoh data campuran yang lengkap — terdapat 6 fitur numerik kontinyu (morfologi + isotop), 2 fitur ordinal (urutan sampel & tahap reproduksi), 4 fitur nominal tanpa urutan (spesies, pulau, wilayah, nama studi), dan 2 fitur biner (`sex` dan `clutch_completion`). Kombinasi ini membutuhkan pendekatan multi-metrik.
+
+### 3.15.3 Mengapa Data Campuran Memerlukan Beberapa Metrik?
+
+Setiap tipe data memiliki cara pengukuran jarak yang berbeda:
+
+| Tipe Data | Contoh Kolom | Masalah Jika Salah Metrik | Solusi |
+|-----------|-------------|--------------------------|--------|
+| **Numerik** | `culmen_length_mm`, `body_mass_g`, `flipper_length_mm` | Tanpa normalisasi, `body_mass_g` (range 2700–6300) mendominasi jarak vs `culmen_depth_mm` (range 13–22) | Euclidean/Manhattan setelah scaling |
+| **Ordinal** | `sample_number`, `stage` | `sample_number` mengandung urutan kohort penelitian — bukan angka acak | Konversi ke rank → Spearman |
+| **Nominal** | `species`, `island`, `region` | “Adelie” vs “Gentoo” bukan selisih angka, tidak ada urutan antar spesies | Hamming (match/mismatch) |
+| **Biner** | `sex`, `clutch_completion` | MALE/FEMALE dan Yes/No bukan numerik; cukup cek kesamaan | Hamming / Target |
+
+### 3.15.4 Koneksi ke Database PostgreSQL
+
+Data Palmer Penguins juga dimuat langsung dari database PostgreSQL menggunakan widget **SQL Table** di Orange. Konfigurasi koneksi yang digunakan:
+
+| Parameter | Nilai |
+|-----------|-------|
+| **Server** | PostgreSQL |
+| **Host** | `127.0.0.1` |
+| **Port** | `5432` |
+| **Database** | `Penguins` |
+| **User** | `postgres` |
+| **Table** | `penguins_lter` |
+| **Total baris** | 344 |
+
+![Koneksi SQL Table ke PostgreSQL Penguins](DataCampuranPertemuan3/Penguins/PostgreKeOrange.png)
+
+> **Gambar:** Widget SQL Table Orange berhasil terhubung ke database PostgreSQL `Penguins` dan memuat tabel `penguins_lter` (344 baris). Tombol Connect berhasil, dan kolom-kolom seperti `species`, `island`, `culmen_length_mm`, `body_mass_g`, `sex` tersedia untuk dialirkan ke pipeline pengukuran jarak.
+
+### 3.15.5 Workflow Orange — Pengukuran Jarak pada Data Campuran
+
+Orange Data Mining digunakan untuk mengukur jarak menggunakan **4 metrik berbeda** yang masing-masing disesuaikan dengan tipe kolom dalam Palmer Penguins. Dua sumber data digunakan: file CSV dan koneksi PostgreSQL.
+
+**Arsitektur Workflow `Penguins.ows`:**
+
+```
+[CSV File Import] ──Data──▶ [Data Table] ──Selected Data──▶ [Euclidean Distances] ──▶ [Distance Matrix Euclidean] ──▶ [Save]
+  (penguins_lter.csv)                     ──Selected Data──▶ [Manhattan Distances] ──▶ [Distance Matrix Manhattan] ──▶ [Save]
+                                           ──Selected Data──▶ [Spearman Distances]  ──▶ [Distance Matrix Spearman]  ──▶ [Save]
+                                           ──Selected Data──▶ [Hamming Distances]   ──▶ [Distance Matrix Hamming]   ──▶ [Save]
+
+[SQL Table] ──────Data──▶ [Data Table (1)] ──Selected Data──▶ [Euclidean Distances] ──▶ [Distance Matrix] ──▶ [Save]
+  (Penguins DB,            ...               ──Selected Data──▶ [Manhattan Distances] ──▶ [Distance Matrix] ──▶ [Save]
+   penguins_lter)                            ──Selected Data──▶ [Spearman Distances]  ──▶ [Distance Matrix] ──▶ [Save]
+                                             ──Selected Data──▶ [Hamming Distances]   ──▶ [Distance Matrix] ──▶ [Save]
+```
+
+**Penjelasan Widget-widget Orange yang Digunakan:**
+
+| Widget Orange | Fungsi | Setting yang Dipakai |
+|---------------|--------|---------------------|
+| **CSV File Import** | Membaca `penguins_lter.csv` dari folder lokal | Path: `DataCampuranPertemuan3/Penguins/penguins_lter.csv` |
+| **SQL Table** | Terhubung ke PostgreSQL dan menarik tabel `penguins_lter` | Host: 127.0.0.1, DB: Penguins |
+| **Data Table** | Menampilkan data setelah dimuat — verifikasi kolom dan tipe data | — |
+| **Distances (Euclidean)** | Menghitung jarak Euclidean antar baris penguin | Metric: Euclidean |
+| **Distances (Manhattan)** | Menghitung jarak Manhattan antar baris penguin | Metric: City Block |
+| **Distances (Spearman)** | Menghitung jarak berbasis korelasi rank Spearman | Metric: Spearman |
+| **Distances (Hamming)** | Menghitung proporsi atribut berbeda antar baris | Metric: Hamming |
+| **Distance Matrix** | Menampilkan matriks jarak lengkap antar semua pasang penguin | — |
+| **Save Distance Matrix** | Menyimpan hasil matriks jarak ke file `.dst` | — |
+
+**Penjelasan 4 Metrik yang Dipakai:**
+
+| Metrik | Cocok Untuk | Cara Kerja pada Palmer Penguins |
+|--------|-------------|----------------------------------|
+| **Euclidean** | Fitur numerik | $d = \sqrt{\sum(x_i - y_i)^2}$ — mengukur jarak morfologi: panjang paruh, kedalaman paruh, panjang sirip, massa tubuh, dan nilai isotop. Perlu scaling karena `body_mass_g` (ribuan) jauh lebih besar dari `culmen_depth_mm` (belasan) |
+| **Manhattan** | Fitur numerik (robust outlier) | $d = \sum\|x_i - y_i\|$ — lebih tahan terhadap penguin dengan massa tubuh ekstrem (penguin Gentoo bisa 2× lebih besar dari Adelie) |
+| **Spearman** | Fitur ordinal | Menghitung korelasi rank antar baris; ideal untuk `sample_number` (urutan pengambilan sampel dalam musim penelitian) dan `stage` |
+| **Hamming** | Fitur nominal & biner | Menghitung proporsi atribut yang berbeda; ideal untuk `species` (3 spesies), `island` (3 pulau), `sex` (MALE/FEMALE), `clutch_completion` (Yes/No) |
+
+```{admonition} Mengapa 4 Metrik Sekaligus pada Palmer Penguins?
+:class: tip
+Dataset ini memiliki tipe yang sangat beragam — 6 numerik, 2 ordinal, 4 nominal, 2 biner. Tidak ada satu metrik tunggal yang optimal:
+
+- **Euclidean & Manhattan** paling cocok untuk fitur morfologi (`culmen_length_mm`, `culmen_depth_mm`, `flipper_length_mm`, `body_mass_g`) dan isotop (`delta_15_n`, `delta_13_c`). Manhattan lebih robust karena massa tubuh Gentoo jauh lebih besar dibanding Adelie.
+- **Spearman** cocok untuk `sample_number` yang merepresentasikan urutan sampel sistematis per musim. Spearman menghormati urutan ini tanpa memperlakukannya sebagai jarak linear murni.
+- **Hamming** tepat untuk `species`, `island`, `region`, `study_name` — semua kategori nominal tanpa urutan — serta `sex` dan `clutch_completion` yang biner.
+```
+
+![Workflow Orange — Pengukuran Jarak Data Campuran Palmer Penguins](DataCampuranPertemuan3/Penguins/DataCampuranPenguins.png)
+
+> **Gambar:** Workflow `Penguins.ows` di Orange Data Mining. Terdapat dua sumber data: **CSV File Import** (`penguins_lter.csv`) dan **SQL Table** (database PostgreSQL `Penguins`, tabel `penguins_lter`, 344 baris), masing-masing dialirkan ke **Data Table** lalu ke empat widget **Distances** (Euclidean, Manhattan, Spearman, Hamming) → **Distance Matrix** → **Save Distance Matrix**.
+
+### 3.15.6 Download File Orange Workflow & SQL
+
+File workflow Orange dan script SQL yang digunakan untuk tugas ini dapat diunduh berikut:
+
+```{admonition} 📥 Download File
+:class: note
+**Orange Workflow:**
+{download}`Penguins.ows — Workflow Pengukuran Jarak Mixed-Type <DataCampuranPertemuan3/Penguins/Penguins.ows>`
+
+File ini berisi seluruh pipeline Orange: dua sumber data (CSV `penguins_lter.csv` dan SQL `penguins_lter` @ `Penguins`), masing-masing dialirkan ke 4 widget **Distances** (Euclidean, Manhattan, Spearman, Hamming) → **Distance Matrix** → **Save Distance Matrix**.
+
+**SQL Database:**
+{download}`Penguins.sql — Script SQL Pembuatan Database & Tabel Palmer Penguins <DataCampuranPertemuan3/Penguins/Penguins.sql>`
+
+File ini berisi script SQL untuk membuat database `Penguins`, tabel `penguins_lter` dengan 17 kolom (study_name, sample_number, species, region, island, stage, individual_id, clutch_completion, date_egg, culmen_length_mm, culmen_depth_mm, flipper_length_mm, body_mass_g, sex, delta_15_n, delta_13_c, comments), dan mengimpor 344 data penguin dari Palmer Station ke PostgreSQL.
+```
+
+### 3.15.7 Konsep Gower Distance (Referensi Teoritis)
+
+Untuk pengukuran jarak data campuran secara teori matematis, digunakan **Gower Distance** yang menggabungkan semua tipe data dengan formula:
+
+$$d_{Gower}(x, y) = \frac{1}{p}\sum_{i=1}^{p} d_i(x_i, y_i)$$
+
+| Tipe Fitur | Cara Hitung Komponen $d_i$ | Formula |
+|-----------|--------------------------|---------|
+| **Numerik** | Selisih dinormalisasi dengan range | $\frac{\|x_i - y_i\|}{range_i}$ |
+| **Nominal** | Sama = 0, Beda = 1 | $0$ jika $x_i = y_i$, else $1$ |
+| **Biner** | Sama = 0, Beda = 1 | $0$ jika $x_i = y_i$, else $1$ |
+| **Ordinal** | Selisih posisi dinormalisasi | $\frac{\|rank(x_i) - rank(y_i)\|}{k-1}$ |
+
+Dalam praktik Orange, Gower Distance diimplementasikan secara terpisah per tipe menggunakan metrik Euclidean (numerik), Spearman (ordinal), dan Hamming (nominal/biner) — seperti yang telah dilakukan dalam tugas ini.
+
+---
+
+## Menyimpan Dataset Final untuk Modeling
+
+---
+
+## 3.16 Menyimpan Dataset Final
+
+Setelah seluruh proses preparation selesai, dataset yang sudah di-scale disimpan sebagai file CSV baru untuk digunakan pada tahap **Modeling**.
+
+```python
+df_modeling = pd.DataFrame(X_scaled, columns=X.columns)
+df_modeling['target'] = y.values
+df_modeling.to_csv("IRIS_after_preparation_for_modeling.csv", index=False)
+df_modeling.head()
+```
+
+**Output `df_modeling.head()` — Dataset Siap Modeling:**
+
+| | sepal_length | sepal_width | petal_length | petal_width | target |
+|--|---|---|---|---|:---:|
+| **0** | -0.9155 | 1.0199 | -1.3577 | -1.3359 | 0.0 |
+| **1** | -1.1576 | -0.1280 | -1.3577 | -1.3359 | 0.0 |
+| **2** | -1.3996 | 0.3311 | -1.4147 | -1.3359 | 0.0 |
+| **3** | -1.5206 | 0.1015 | -1.3006 | -1.3359 | 0.0 |
+| **4** | -1.0365 | 1.2495 | -1.3577 | -1.3359 | 0.0 |
+
+Dataset ini telah siap digunakan untuk tahap Modeling (KNN, Decision Tree, SVM, dll). Kolom `target` berisi label encoded (0 = setosa, 1 = versicolor, 2 = virginica).
+
+---
