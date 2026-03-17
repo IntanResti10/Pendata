@@ -1,8 +1,0 @@
-format: jb-book
-root: intro
-chapters:
-- file: Bussiness-Understanding
-- file: Data-Understanding
-- file: Data-Preparation
-- file: Modelling
-- file: Deployment
