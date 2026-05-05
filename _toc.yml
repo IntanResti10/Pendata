@@ -3,5 +3,10 @@
 
 format: jb-book
 root: intro
+
 chapters:
-- file: business
+  - file: business
+
+  - file: data_understanding
+    sections:
+      - file: eksplorasi_data
