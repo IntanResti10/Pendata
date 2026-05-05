@@ -1,0 +1,1388 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>MISSING VALUES &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'missing_values';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Eksplorasi Data" href="eksplorasi_data.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/semut.jpeg" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/semut.jpeg" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    240411100147 Intan Resti Haslindawati
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="business.html">Business Understanding</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="data_understanding.html">Data Understanding</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="eksplorasi_data.html">Eksplorasi Data</a></li>
+
+
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">MISSING VALUES</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmissing_values.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/missing_values.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>MISSING VALUES</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-data-min-max">1. Normalisasi Data MIN-MAX</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-nilai-min-max">2.Menentukan Nilai Min-Max</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-jarak-euclidean">3. Menghitung JaraK Euclidean</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-bobot-wknn">4. Menghitung Bobot WKNN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pilih-k-tetangga-terdekat">5. Pilih K Tetangga Terdekat</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-wknn">6. Hitung WKNN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-data">NORMALISASI DATA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#macam-macam-normalisasi-data">Macam - Macam Normalisasi Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-normalization">1. Min Max Normalization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#z-score-normalization">2. Z-Score Normalization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#decimal-scalling">3. Decimal Scalling</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-menggunakan-pyhton-sklearn">4. Normalisasi Menggunakan Pyhton (Sklearn)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-fungsi-normalisasi-sendiri">5. Membuat Fungsi Normalisasi Sendiri</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="missing-values">
+<h1>MISSING VALUES<a class="headerlink" href="#missing-values" title="Permalink to this heading">#</a></h1>
+<p>Missing Values adalah yang hilang atau kosong dalam dataset.
+Contoh Data :</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>No</p></th>
+<th class="head"><p>IPK</p></th>
+<th class="head"><p>PO</p></th>
+<th class="head"><p>JML</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>2000000</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>3</p></td>
+<td><p>3000000</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>4</p></td>
+<td><p>2000000</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>2</p></td>
+<td><p>2000000</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>3</p></td>
+<td><p>3000000</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>4</p></td>
+<td><p>4000000</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>2</p></td>
+<td><p>3000000</p></td>
+<td><p>?</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Nilai JML pada data ke-7 hilang, sehingga harus diprediksi menggunakan WKNN (Weighted K-Nearest Neighbor).
+<strong>Penyebab Missing Values</strong></p>
+<ul class="simple">
+<li><p>Kesalahan saat pengumpulan data</p></li>
+<li><p>Data tidak diinput oleh responden atau sistem</p></li>
+<li><p>Kerusakan atau kehilangan data</p></li>
+<li><p>Kesalahan sat proses penyimpanan atau pengolahan data.
+<strong>Cara Mengatasi Missing Values</strong>
+Beberapa metode yang dapat digunakan untuk mengatasi missing values:</p></li>
+<li><p>menghapus data yang memiliki nilai kosong.</p></li>
+<li><p>Mengisi dengan nilai Mean, Median, atau Modus.</p></li>
+<li><p>Menggunakan metode KNN atau WKNN(Weight K-Nearest Neighbor)</p></li>
+<li><p>Menggunakan metode imputasi lainnya.</p></li>
+</ul>
+<p>Pada data tersebut menghitung menggunakan metode WKNN</p>
+<p><strong>Langkah WKNN manual:</strong></p>
+<section id="normalisasi-data-min-max">
+<h2>1. Normalisasi Data MIN-MAX<a class="headerlink" href="#normalisasi-data-min-max" title="Permalink to this heading">#</a></h2>
+<p>Rumus Normalisasi Data: <img alt="image" src="https://hackmd.io/_uploads/B1BobmEcZx.png" />
+Keterangan:</p>
+<ul class="simple">
+<li><p>x = nilai data</p></li>
+<li><p>xmin = nilai terkecil</p></li>
+<li><p>xmax = nilai terbesar</p></li>
+<li><p>x′ = hasil normalisasi</p></li>
+</ul>
+</section>
+<section id="menentukan-nilai-min-max">
+<h2>2.Menentukan Nilai Min-Max<a class="headerlink" href="#menentukan-nilai-min-max" title="Permalink to this heading">#</a></h2>
+<p><strong>Nilai IPK:</strong></p>
+<ul class="simple">
+<li><p>MIN = 2</p></li>
+<li><p>MAX = 4
+<strong>Nilai PO :</strong></p></li>
+<li><p>MIN = 2000000</p></li>
+<li><p>MAX = 4000000
+<strong>Nilai JML:</strong></p></li>
+<li><p>MIN = 2</p></li>
+<li><p>MAX = 3
+<strong>Contoh Perhitungan</strong>
+<strong>Normalisasi IPK</strong>
+Data 1 (IPK = 2)
+<img alt="image" src="https://hackmd.io/_uploads/BkjRYVE9Zg.png" />
+<strong>Normalisasi PO</strong>
+Data 1 (PO = 2000000)
+<img alt="image" src="https://hackmd.io/_uploads/S1kzcEN5be.png" />
+<strong>Normalisasi JML</strong>
+JML = 2
+<img alt="image" src="https://hackmd.io/_uploads/rJCXcNN5Wx.png" />
+JML = 3
+<img alt="image" src="https://hackmd.io/_uploads/rk-r9V4qbe.png" /></p></li>
+</ul>
+<p><strong>Data setelah di normalisasi</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Data</p></th>
+<th class="head"><p>IPK</p></th>
+<th class="head"><p>PO</p></th>
+<th class="head"><p>JML</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>0.5</p></td>
+<td><p>0.5</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>0.5</p></td>
+<td><p>0.5</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>0</p></td>
+<td><p>0.5</p></td>
+<td><p>?</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="menghitung-jarak-euclidean">
+<h2>3. Menghitung JaraK Euclidean<a class="headerlink" href="#menghitung-jarak-euclidean" title="Permalink to this heading">#</a></h2>
+<p>Jarak Euclidean adalah metode untuk menghitung jarak antara dua titik dalam ruang multidimensi. Dalam data mining atau machine learning, jarak Euclidean digunakan untuk:</p>
+<ul class="simple">
+<li><p>mengukur kemiripan antar data</p></li>
+<li><p>menentukan tetangga terdekat pada algoritma KNN
+Semakin kecil jaraknya, maka data tersebut semakin mirip.
+Rumus Euclidean : <img alt="image" src="https://hackmd.io/_uploads/By2tXDHc-x.png" />
+Keterangan :</p></li>
+<li><p>d = jarak antara dua data</p></li>
+<li><p>x₁ , y₁ = nilai atribut data pertama</p></li>
+<li><p>x₂ , y₂ = nilai atribut data kedua</p></li>
+</ul>
+<p>Target data yang dicari adalah data missing JML pada baris ke-7 setelah di normalisasi dan akan dibandingkan dengan data 1 sampai data 6 setelah di normalisasi.
+Data yang dibandingkan adalah IPK data i , PO data i dengan IPK data target , PO data target
+<strong>Contoh perhitungan:</strong>
+<strong>1. Jarak data 1 ke data 7</strong>
+Data 1 = (IPK = 0, PO = 0)
+Data 7 = (IPK = 0, PO = 0.5)
+<img alt="image" src="https://hackmd.io/_uploads/SJ5WQPB9-g.png" />
+<strong>2. Jarak data 2 ke data 7</strong>
+Data 2 = (IPK= 0.5, PO = 0.5)
+Data 7 = (IPK = 0, PO = 0.5)
+<img alt="image" src="https://hackmd.io/_uploads/BJtImvHcWe.png" />
+<strong>3. Jarak data 3 ke data 7</strong>
+Data 3 = (IPK= 1, PO = 0)
+Data 7 = (IPK = 0, PO = 0.5)
+<img alt="image" src="https://hackmd.io/_uploads/Synr4vH9Wl.png" />
+<strong>4. Jarak data 4 ke data 7</strong>
+Data 4 = (IPK= 0, PO = 0)
+Data 7 = (IPK = 0, PO = 0.5)
+<img alt="image" src="https://hackmd.io/_uploads/SyliUEPHqZe.png" />
+<strong>5. Jarak data 5 ke data 7</strong>
+Data 5 = (IPK= 0.5, PO = 0.5)
+Data 7 = (IPK = 0, PO = 0.5)
+<img alt="image" src="https://hackmd.io/_uploads/SJkKVwS9-g.png" />
+<strong>6. Jarak data 6 ke data 7</strong>
+Data 6 = (IPK= 1, PO = 1)
+Data 7 = (IPK = 0, PO = 0.5)
+<img alt="image" src="https://hackmd.io/_uploads/Hyu9Ewr9Zx.png" /></p>
+<p><strong>Hasil semua jarak :</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Data</p></th>
+<th class="head"><p>Jarak</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>0.5</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>1.118</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>0.5</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>0.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>1.118</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="menghitung-bobot-wknn">
+<h2>4. Menghitung Bobot WKNN<a class="headerlink" href="#menghitung-bobot-wknn" title="Permalink to this heading">#</a></h2>
+<p>Rumus : <img alt="image" src="https://hackmd.io/_uploads/r1cZzKrqZe.png" />
+Keterangan</p>
+<ul class="simple">
+<li><p>wi = bobot data ke-i</p></li>
+<li><p>di = jarak Euclidean data ke-i terhadap data target</p></li>
+</ul>
+<p>Contoh perhitungan bobot
+<strong>Data 1</strong> : <img alt="image" src="https://hackmd.io/_uploads/SylKdXqSqZe.png" />
+<strong>Data 2</strong> : <img alt="image" src="https://hackmd.io/_uploads/HyStQ9r5-x.png" />
+<strong>Data 3</strong> : <img alt="image" src="https://hackmd.io/_uploads/SJA5XqHqbg.png" />
+<strong>Data 4</strong> : <img alt="image" src="https://hackmd.io/_uploads/HJb2QcScZx.png" />
+<strong>Data 5</strong> : <img alt="image" src="https://hackmd.io/_uploads/H1Wp7cH5-x.png" />
+<strong>Data 6</strong> : <img alt="image" src="https://hackmd.io/_uploads/SkwAQcr9Wl.png" />
+<strong>Hasil Perhitungan Bobot WKNN</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Data</p></th>
+<th class="head"><p>Jarak</p></th>
+<th class="head"><p>Bobot</p></th>
+<th class="head"><p>JML</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0.5</p></td>
+<td><p>2</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>0.5</p></td>
+<td><p>2</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>1.118</p></td>
+<td><p>0.894</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>0.5</p></td>
+<td><p>2</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>0.5</p></td>
+<td><p>2</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>1.118</p></td>
+<td><p>0.894</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="pilih-k-tetangga-terdekat">
+<h2>5. Pilih K Tetangga Terdekat<a class="headerlink" href="#pilih-k-tetangga-terdekat" title="Permalink to this heading">#</a></h2>
+<p>Nilai K adalah jumlah tetangga yang akan digunakan.
+Misal K =3</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Data</p></th>
+<th class="head"><p>Jarak</p></th>
+<th class="head"><p>Bobot</p></th>
+<th class="head"><p>JML</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0.5</p></td>
+<td><p>2</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>0.5</p></td>
+<td><p>2</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>0.5</p></td>
+<td><p>2</p></td>
+<td><p>3</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Dari ketiga ini disebut K tetangga terdekat.</p>
+</section>
+<section id="hitung-wknn">
+<h2>6. Hitung WKNN<a class="headerlink" href="#hitung-wknn" title="Permalink to this heading">#</a></h2>
+<p>Rumus : <img alt="image" src="https://hackmd.io/_uploads/Skuwk9S5be.png" />
+Perhitungan: <img alt="image" src="https://hackmd.io/_uploads/SyuKJ9BcWe.png" />
+Jumlah Bobot: <img alt="image" src="https://hackmd.io/_uploads/BkPqJcr9-l.png" />
+Hasil akhir: <img alt="image" src="https://hackmd.io/_uploads/rk4ijJ9B9Ze.png" />
+Karena nilai JML berupa bilangan bulat, maka hasil akhir dibulatkan menjadi 3
+Hasil imputasi missing value JML pada data ke-7 adalah 3</p>
+<p><strong>Tabel Akhir</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Data</p></th>
+<th class="head"><p>IPK</p></th>
+<th class="head"><p>PO</p></th>
+<th class="head"><p>JML</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>2000000</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>3</p></td>
+<td><p>3000000</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>4</p></td>
+<td><p>2000000</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>2</p></td>
+<td><p>2000000</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>3</p></td>
+<td><p>3000000</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>4</p></td>
+<td><p>4000000</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>2</p></td>
+<td><p>3000000</p></td>
+<td><p><strong>3</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Tabel Data setalah di normalisasi</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Data</p></th>
+<th class="head"><p>IPK</p></th>
+<th class="head"><p>PO</p></th>
+<th class="head"><p>JML</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>0.5</p></td>
+<td><p>0.5</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>0.5</p></td>
+<td><p>0.5</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>0</p></td>
+<td><p>0.5</p></td>
+<td><p><strong>1</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Nilai JML pada data ke-7 diisi dari hasil WKNN = 3. Jika dinormalisasi : <img alt="image" src="https://hackmd.io/_uploads/SyjY_5H5bx.png" />
+maka nilai normalisasi JML adalah 1</p>
+</section>
+<section id="normalisasi-data">
+<h2>NORMALISASI DATA<a class="headerlink" href="#normalisasi-data" title="Permalink to this heading">#</a></h2>
+<p>Normalisasi data adalah proses mengubah skala nilai pada dataset agar berada pada rentang tertentu tanpa mengubah hubungan antar data.
+Tujuannya adalah :</p>
+<ul class="simple">
+<li><p>Menyamakan skala data</p></li>
+<li><p>Mempercepat proses perhitungan algoritma</p></li>
+<li><p>Menghindari dominasi nilai yang besar
+Normalisasi sering digunakan pada algoritma seperti KNN, clustering, dan neural network.</p></li>
+</ul>
+<section id="macam-macam-normalisasi-data">
+<h3>Macam - Macam Normalisasi Data<a class="headerlink" href="#macam-macam-normalisasi-data" title="Permalink to this heading">#</a></h3>
+<section id="min-max-normalization">
+<h4>1. Min Max Normalization<a class="headerlink" href="#min-max-normalization" title="Permalink to this heading">#</a></h4>
+<p>Metode ini mengubah nilai data ke rentang 0 sampai 1.
+Rumus : <img alt="image" src="https://hackmd.io/_uploads/HJ-22cH5-e.png" />
+Contoh :
+<strong>Data Awal</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Data</p></th>
+<th class="head"><p>IPK</p></th>
+<th class="head"><p>PO</p></th>
+<th class="head"><p>JML</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>2000000</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>3</p></td>
+<td><p>3000000</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>4</p></td>
+<td><p>2000000</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>2</p></td>
+<td><p>2000000</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>3</p></td>
+<td><p>3000000</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>4</p></td>
+<td><p>4000000</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>2</p></td>
+<td><p>3000000</p></td>
+<td><p>3</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Menentukan Min - Max</strong></p>
+<ul class="simple">
+<li><p>IPK (Min = 2, Max = 4)</p></li>
+<li><p>PO (Min = 2000000, Max = 4000000)</p></li>
+<li><p>JML (Min = 2, Max = 3)
+<strong>Menghitung IPK</strong>
+<strong>Data 1</strong> : (2−2)/(4−2)=0
+<strong>Data 2</strong> : (3−2)/(4−2)=0.5
+<strong>Data 3</strong>: (4−2)/(4−2)=1
+<strong>Menghitung PO</strong>
+<strong>Data 1 :</strong> (2000000−2000000)/(4000000−2000000)=0
+<strong>Data 2 :</strong>(3000000−2000000)/(4000000−2000000)=0.5
+<strong>Data 6 :</strong> (4000000−2000000)/(4000000−2000000)=1
+<strong>Menghitung JML</strong>
+Data 1 : (2−2)/(3−2)=0
+Data 2 : (3−2)/(3−2)=1</p></li>
+</ul>
+<p><strong>Hasil Normalisasi Min-Max</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Data</p></th>
+<th class="head"><p>IPK</p></th>
+<th class="head"><p>PO</p></th>
+<th class="head"><p>JML</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>0.5</p></td>
+<td><p>0.5</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>0.5</p></td>
+<td><p>0.5</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>0</p></td>
+<td><p>0.5</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="z-score-normalization">
+<h4>2. Z-Score Normalization<a class="headerlink" href="#z-score-normalization" title="Permalink to this heading">#</a></h4>
+<p>Metode ii menyesuaikan data berdasarkan mean dan standar deviasi
+Rumus: <img alt="image" src="https://hackmd.io/_uploads/HJPduQL9We.png" />
+Keterangan :</p>
+<ul class="simple">
+<li><p>x = nilai data</p></li>
+<li><p>μ = mean (rata-rata)</p></li>
+<li><p>σ = standar deviasi</p></li>
+</ul>
+<p><strong>1. Menghitung Mean (Rata-rata)</strong>
+Rumus : <img alt="image" src="https://hackmd.io/_uploads/SyC8d78qWe.png" />
+Menjumlahkan semua data lalu bagi jumlah data
+μ = 2+3+4+2+3+4+2/7
+μ = 20/7
+μ = 2.857
+Jadi mean adalah <strong>2.857</strong>
+<strong>2. Mengurangi setiap data dengan mean (x - mean)</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Data</p></th>
+<th class="head"><p>Perhitungan</p></th>
+<th class="head"><p>Hasil</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>2 − 2.857</p></td>
+<td><p>-0.857</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>3 − 2.857</p></td>
+<td><p>0.143</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>4 − 2.857</p></td>
+<td><p>1.143</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>2 − 2.857</p></td>
+<td><p>-0.857</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>3 − 2.857</p></td>
+<td><p>0.143</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>4 − 2.857</p></td>
+<td><p>1.143</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>2 − 2.857</p></td>
+<td><p>-0.857</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>3. Kuadratkan Hasilnya</strong>
+Hitung (x − μ)²</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Data</p></th>
+<th class="head"><p>x-μ</p></th>
+<th class="head"><p>(x-μ)²</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>-0.857</p></td>
+<td><p>0.735</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>0.143</p></td>
+<td><p>0.020</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>1.143</p></td>
+<td><p>1.306</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>-0.857</p></td>
+<td><p>0.735</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>0.143</p></td>
+<td><p>0.020</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>1.143</p></td>
+<td><p>1.306</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>-0.857</p></td>
+<td><p>0.735</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Jumlahkan semua hasilnya
+0.735 + 0.020 + 1.306 + 0.735 + 0.020 + 1.306 + 0.735 = <strong>4.857</strong></p>
+<p><strong>4. Menghitung Standar Deviasi</strong>
+Hasil jumlah dibagi dengan 7 dan di akarkan
+<img alt="image" src="https://hackmd.io/_uploads/Skgah7I5Ze.png" />
+Jadi standar deviasi adalah 0.833
+<strong>Menghitung Z-Score</strong>
+Rumus : <img alt="image" src="https://hackmd.io/_uploads/S1dQa7IqZx.png" />
+<strong>Data 1 (IPK = 2)</strong>
+z = 2−2.857/0.833
+z = -1.03
+<strong>Data 2 (IPK = 3)</strong>
+z = 3−2.857/0.833
+z = 0.17
+<strong>Data 3 (IPK = 4)</strong>
+z = 4−2.857/0.833
+z = 1.37</p>
+<p><strong>Hasil Akhir</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Data</p></th>
+<th class="head"><p>IPK</p></th>
+<th class="head"><p>Z-Score</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>-1.03</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>3</p></td>
+<td><p>0.17</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>4</p></td>
+<td><p>1.37</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>2</p></td>
+<td><p>-1.03</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>3</p></td>
+<td><p>0.17</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>4</p></td>
+<td><p>1.37</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>2</p></td>
+<td><p>-1.03</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="decimal-scalling">
+<h4>3. Decimal Scalling<a class="headerlink" href="#decimal-scalling" title="Permalink to this heading">#</a></h4>
+<p>Metode ini membagi nilai dengan 10ⁿ hingga berada pada rentang kecil.
+Rumus: <img alt="image" src="https://hackmd.io/_uploads/SyUV2MLcWe.png" />
+Keterangan :</p>
+<ul class="simple">
+<li><p>x = nilai data</p></li>
+<li><p>j = jumlah digit dari nilai terbesar pada data
+<strong>Menentukan data yang akan dinormalisasi</strong>
+Contoh menggunakan data PO : 2000000, 3000000, 2000000, 2000000, 3000000, 4000000, 3000000
+Nilai terbesar dari data tersebut adalah <strong>4000000</strong>
+Menentukan jumlah digit. pada data nilai terbesar, 4000000 memiliki 7 digit.
+<strong>jadi, jumlah j = 7</strong>
+Selanjutnya menghitung jumlah 10 dipangkatkan dengan 7 (10^j) adalah 10^7=10000000
+Lalu membagi setiap data dengan 10^j
+Data 1 : 2000000/10000000 = 0.2
+Data 2 : 3000000/10000000 = 0.3
+Data 3 : 2000000/10000000 = 0.2
+Data 4 : 2000000/10000000 = 0.2
+Data 5 : 3000000/10000000 = 0.3
+Data 6 : 4000000/10000000 = 0.4
+Data 7 : 3000000/10000000 = 0.3</p></li>
+</ul>
+<p><strong>Hasil Normalisasi Decimal Scaling</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Data</p></th>
+<th class="head"><p>PO</p></th>
+<th class="head"><p>Hasil Normalisasi</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>2000000</p></td>
+<td><p>0.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>3000000</p></td>
+<td><p>0.3</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>2000000</p></td>
+<td><p>0.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>2000000</p></td>
+<td><p>0.2</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>3000000</p></td>
+<td><p>0.3</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>4000000</p></td>
+<td><p>0.4</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>3000000</p></td>
+<td><p>0.3</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="normalisasi-menggunakan-pyhton-sklearn">
+<h4>4. Normalisasi Menggunakan Pyhton (Sklearn)<a class="headerlink" href="#normalisasi-menggunakan-pyhton-sklearn" title="Permalink to this heading">#</a></h4>
+<div class="highlight-import notranslate"><div class="highlight"><pre><span></span>from sklearn.preprocessing import MinMaxScaler, StandardScaler
+
+# Dataset
+data = {
+    &#39;IPK&#39;: [2,3,4,2,3,4,2],
+    &#39;PO&#39;: [2000000,3000000,2000000,2000000,3000000,4000000,3000000],
+    &#39;JML&#39;: [2,3,2,3,2,3,3]
+}
+
+df = pd.DataFrame(data)
+
+# Min-Max Normalization
+minmax_scaler = MinMaxScaler()
+minmax = minmax_scaler.fit_transform(df)
+
+# Z-Score Normalization
+zscore_scaler = StandardScaler()
+zscore = zscore_scaler.fit_transform(df)
+
+print(&quot;Min-Max Normalization&quot;)
+print(minmax)
+
+print(&quot;\nZ-Score Normalization&quot;)
+print(zscore)
+</pre></div>
+</div>
+</section>
+<section id="membuat-fungsi-normalisasi-sendiri">
+<h4>5. Membuat Fungsi Normalisasi Sendiri<a class="headerlink" href="#membuat-fungsi-normalisasi-sendiri" title="Permalink to this heading">#</a></h4>
+<div class="highlight-import notranslate"><div class="highlight"><pre><span></span>import numpy as np
+
+# Dataset
+data = {
+    &#39;IPK&#39;: [2,3,4,2,3,4,2],
+    &#39;PO&#39;: [2000000,3000000,2000000,2000000,3000000,4000000,3000000],
+    &#39;JML&#39;: [2,3,2,3,2,3,3]
+}
+
+df = pd.DataFrame(data)
+
+# Fungsi Min-Max
+def minmax_normalisasi(data):
+    return (data - data.min()) / (data.max() - data.min())
+
+# Fungsi Z-Score
+def zscore_normalisasi(data):
+    mean = data.mean()
+    std = data.std()
+    return (data - mean) / std
+
+# Fungsi Decimal Scaling
+def decimal_scaling(data):
+    max_val = data.abs().max()
+    j = len(str(int(max_val)))
+    return data / (10**j)
+
+# Hasil Normalisasi
+minmax = df.apply(minmax_normalisasi)
+zscore = df.apply(zscore_normalisasi)
+decimal = df.apply(decimal_scaling)
+
+print(&quot;Data Asli&quot;)
+print(df)
+
+print(&quot;\nMin-Max Normalization&quot;)
+print(minmax)
+
+print(&quot;\nZ-Score Normalization&quot;)
+print(zscore)
+
+print(&quot;\nDecimal Scaling&quot;)
+print(decimal)
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="eksplorasi_data.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Eksplorasi Data</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-data-min-max">1. Normalisasi Data MIN-MAX</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-nilai-min-max">2.Menentukan Nilai Min-Max</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-jarak-euclidean">3. Menghitung JaraK Euclidean</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-bobot-wknn">4. Menghitung Bobot WKNN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pilih-k-tetangga-terdekat">5. Pilih K Tetangga Terdekat</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hitung-wknn">6. Hitung WKNN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-data">NORMALISASI DATA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#macam-macam-normalisasi-data">Macam - Macam Normalisasi Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-normalization">1. Min Max Normalization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#z-score-normalization">2. Z-Score Normalization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#decimal-scalling">3. Decimal Scalling</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-menggunakan-pyhton-sklearn">4. Normalisasi Menggunakan Pyhton (Sklearn)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-fungsi-normalisasi-sendiri">5. Membuat Fungsi Normalisasi Sendiri</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
