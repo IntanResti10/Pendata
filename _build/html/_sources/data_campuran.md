@@ -1,9 +1,4 @@
----
-title: PERTEMUAN 3 — DATA PREPARATION (EXTENSI)
-
----
-
-# PERTEMUAN 3 — DATA PREPARATION (EXTENSI)
+# Pertemuan 3 — Data Preparation (extensi)
 ## Studi Kasus: Iris + Data Campuran (Mixed-Type)
 
 Dokumen ini melanjutkan materi Data Preparation (CRISP-DM) yang dibuat sebelumnya, lalu **ditambah**:
