@@ -14,4 +14,4 @@ chapters:
   - file: data_preparation
     sections:
       - file: data_campuran
-      - file: data_campuran_knn
+      - file: data_preparation_knn
