@@ -29,7 +29,7 @@ Tujuannya adalah untuk menganalisis faktor-faktor medis yang berkontribusi terha
 berikut adalah sumber datanya: https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset 
 
 #### Metodologi
-![image](https://hackmd.io/_uploads/SySAqiD0bg.png)
+![metodologi](https://hackmd.io/_uploads/SktL4aP0Wg.png)
 ###### 1. Input Data
 membaca file melalui Excel Reader
 ###### 2. Pre-processing 
@@ -41,7 +41,7 @@ Membagi data menggunakan Table Partitioner dengan rasio 80% (Data Latih) dan 20%
 Melatih model menggunakan Naive Bayes Learner dan melakukan prediksi dengan Naive Bayes Predictor.
 
 #### Visualisasi Data (Scatter Plot)
-![image](https://hackmd.io/_uploads/BJJ2RowRbe.png)
+![scatterplot](https://hackmd.io/_uploads/SytvETvCWx.png)
 - Sumbu X (Horizontal): age (Usia).
 - Sumbu Y (Vertikal): chol (Kolesterol).
 - Titik Merah: Mewakili Target 0 (Pasien Sehat / Tidak ada risiko penyakit jantung). 
@@ -53,12 +53,10 @@ Melatih model menggunakan Naive Bayes Learner dan melakukan prediksi dengan Naiv
 
 #### Hasil 
 ###### Confusion Matrix (Detail Prediksi)
-![image](https://hackmd.io/_uploads/ry2VlhwAZe.png)
+![confusionmatrix](https://hackmd.io/_uploads/SyF_Vaw0be.png)
 - Akurasi (Accuracy): 82,439%. Ini berarti dari 100 pasien, model berhasil menebak dengan benar sekitar 82 orang.  
 - Jumlah Benar (Correct Classified): 169 data.  
 - Jumlah Salah (Wrong Classified): 36 data.  - Tingkat Kesalahan (Error): 17,561%.
 - Cohen's Kappa: 0,648 (Menunjukkan tingkat kesepakatan yang kuat antara prediksi dan kenyataan, di atas faktor kebetulan).  
 
 Model klasifikasi ini memiliki kemampuan yang sangat baik dalam mendeteksi pasien yang sakit jantung (90 dari 105 pasien sakit berhasil ditemukan). Angka akurasi sebesar 82,4% menunjukkan bahwa algoritma Naive Bayes, didukung dengan proses normalisasi data, sangat efektif untuk diimplementasikan pada dataset medis ini sebagai alat bantu diagnosa awal.
-
-
