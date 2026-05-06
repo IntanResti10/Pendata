@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Naive Bayes &#8212; My sample book</title>
+    <title>Implementasi Klasifikasi Play Tennis menggunakan KNIME &#8212; My sample book</title>
   
   
   
@@ -62,11 +62,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'naive_bayes';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'gain_ratio';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Implementasi Klasifikasi Play Tennis menggunakan KNIME" href="gain_ratio.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="data_preparation_knn.html" />
+    <link rel="prev" title="Naive Bayes" href="naive_bayes.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -188,8 +187,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="data_campuran.html">Pertemuan 3 — Data Preparation (extensi)</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Naive Bayes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gain_ratio.html">Implementasi Klasifikasi Play Tennis menggunakan KNIME</a></li>
+<li class="toctree-l1"><a class="reference internal" href="naive_bayes.html">Naive Bayes</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Implementasi Klasifikasi Play Tennis menggunakan KNIME</a></li>
 </ul>
 
     </div>
@@ -261,7 +260,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fnaive_bayes.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fgain_ratio.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -291,7 +290,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/naive_bayes.md" target="_blank"
+      <li><a href="_sources/gain_ratio.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -375,7 +374,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Naive Bayes</h1>
+    <h1>Implementasi Klasifikasi Play Tennis menggunakan KNIME</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -385,22 +384,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-naive-bayes-untuk-prediksi-penyakit-jantung-menggunakan-knime">Implementasi Naive Bayes untuk Prediksi Penyakit Jantung Menggunakan KNIME</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-klinis-fitur-pendukung">Atribut Klinis (Fitur Pendukung)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metodologi">Metodologi</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#input-data">1. Input Data</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-processing">2. Pre-processing</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-splitting">3. Data Splitting</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling">4. Modeling</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data-scatter-plot">Visualisasi Data (Scatter Plot)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil">Hasil</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix-detail-prediksi">Confusion Matrix (Detail Prediksi)</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-knime">Implementasi KNIME</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-dan-visualisasi-decition-tree">Hasil dan Visualisasi Decition Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-model-scorer">Evaluasi Model Scorer</a></li>
 </ul>
             </nav>
         </div>
@@ -412,89 +398,183 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="naive-bayes">
-<h1>Naive Bayes<a class="headerlink" href="#naive-bayes" title="Permalink to this heading">#</a></h1>
-<section id="implementasi-naive-bayes-untuk-prediksi-penyakit-jantung-menggunakan-knime">
-<h2>Implementasi Naive Bayes untuk Prediksi Penyakit Jantung Menggunakan KNIME<a class="headerlink" href="#implementasi-naive-bayes-untuk-prediksi-penyakit-jantung-menggunakan-knime" title="Permalink to this heading">#</a></h2>
-<p>Dataset yang digunakan dalam penelitian ini adalah dataset kesehatan jantung yang bersumber dari file heart.xlsx. Dataset ini memberikan gambaran klinis mengenai kondisi fisik pasien yang digunakan untuk melatih model klasifikasi.
-Tujuannya adalah untuk menganalisis faktor-faktor medis yang berkontribusi terhadap penyakit jantung. Membangun model klasifikasi yang mampu memprediksi status kesehatan pasien (Sehat/Sakit) berdasarkan atribut klinis. Mengukur tingkat akurasi dan efektivitas algoritma Naive Bayes pada dataset.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="implementasi-klasifikasi-play-tennis-menggunakan-knime">
+<h1>Implementasi Klasifikasi Play Tennis menggunakan KNIME<a class="headerlink" href="#implementasi-klasifikasi-play-tennis-menggunakan-knime" title="Permalink to this heading">#</a></h1>
+<p>Data yang digunakan adalah data gain ratio.xlsx</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Day</p></th>
+<th class="head"><p>Outlook</p></th>
+<th class="head"><p>Temp</p></th>
+<th class="head"><p>Humidity</p></th>
+<th class="head"><p>Wind</p></th>
+<th class="head"><p>PlayTennis</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>D1</p></td>
+<td><p>Sunny</p></td>
+<td><p>Hot</p></td>
+<td><p>High</p></td>
+<td><p>False</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p>D2</p></td>
+<td><p>Sunny</p></td>
+<td><p>Hot</p></td>
+<td><p>High</p></td>
+<td><p>True</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p>D3</p></td>
+<td><p>Overcast</p></td>
+<td><p>Hot</p></td>
+<td><p>High</p></td>
+<td><p>False</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>D4</p></td>
+<td><p>Rain</p></td>
+<td><p>Mild</p></td>
+<td><p>High</p></td>
+<td><p>False</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p>D5</p></td>
+<td><p>Rain</p></td>
+<td><p>Cool</p></td>
+<td><p>Normal</p></td>
+<td><p>False</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>D6</p></td>
+<td><p>Rain</p></td>
+<td><p>Cool</p></td>
+<td><p>Normal</p></td>
+<td><p>True</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p>D7</p></td>
+<td><p>Overcast</p></td>
+<td><p>Cool</p></td>
+<td><p>Normal</p></td>
+<td><p>True</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>D8</p></td>
+<td><p>Sunny</p></td>
+<td><p>Mild</p></td>
+<td><p>High</p></td>
+<td><p>False</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p>D9</p></td>
+<td><p>Sunny</p></td>
+<td><p>Cool</p></td>
+<td><p>Normal</p></td>
+<td><p>False</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>D10</p></td>
+<td><p>Rain</p></td>
+<td><p>Mild</p></td>
+<td><p>Normal</p></td>
+<td><p>False</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p>D11</p></td>
+<td><p>Sunny</p></td>
+<td><p>Mild</p></td>
+<td><p>Normal</p></td>
+<td><p>True</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>D12</p></td>
+<td><p>Overcast</p></td>
+<td><p>Mild</p></td>
+<td><p>High</p></td>
+<td><p>True</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-even"><td><p>D13</p></td>
+<td><p>Overcast</p></td>
+<td><p>Hot</p></td>
+<td><p>Normal</p></td>
+<td><p>False</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>D14</p></td>
+<td><p>Rain</p></td>
+<td><p>Mild</p></td>
+<td><p>High</p></td>
+<td><p>True</p></td>
+<td><p>No</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>ada beberapa atribut:</p>
 <ul class="simple">
-<li><p>Jumlah Sampel: 1025 entri data (baris).</p></li>
-<li><p>Jumlah Fitur: 14 kolom (13 atribut medis dan 1 kolom target).</p></li>
-<li><p>Karakteristik Data: Terdiri dari kombinasi antara data numerik (seperti usia dan kadar kolesterol) dan data kategorikal (seperti jenis kelamin dan tipe nyeri dada).</p></li>
+<li><p>Outlook: Sunny, Overcast, Rain.</p></li>
+<li><p>Temperature: Hot, Mild, Cool.</p></li>
+<li><p>Humidity: High, Normal.</p></li>
+<li><p>Wind: True, False.</p></li>
 </ul>
-<section id="atribut-klinis-fitur-pendukung">
-<h3>Atribut Klinis (Fitur Pendukung)<a class="headerlink" href="#atribut-klinis-fitur-pendukung" title="Permalink to this heading">#</a></h3>
+<p>target :</p>
 <ul class="simple">
-<li><p>Age: Usia pasien (dalam tahun).</p></li>
-<li><p>Sex: Jenis kelamin pasien (1 = Laki-laki, 0 = Perempuan).</p></li>
-<li><p>CP (Chest Pain Type): Tipe nyeri dada yang dirasakan (Skala 0-3).</p></li>
-<li><p>Trestbps: Tekanan darah saat istirahat (dalam mm Hg saat masuk rumah sakit).</p></li>
-<li><p>Chol: Kadar kolesterol serum (dalam mg/dl).</p></li>
-<li><p>Fbs (Fasting Blood Sugar): Kadar gula darah puasa &gt; 120 mg/dl (1 = Benar, 0 = Salah).</p></li>
-<li><p>Restecg: Hasil elektrokardiografi saat istirahat (Skala 0-2).</p></li>
-<li><p>Thalach: Detak jantung maksimal yang dicapai pasien.</p></li>
-<li><p>Exang: Angina (nyeri dada) yang dipicu oleh olahraga (1 = Ya, 0 = Tidak).</p></li>
-<li><p>Oldpeak: Depresi ST yang diinduksi oleh olahraga relatif terhadap saat istirahat.\</p></li>
-<li><p>Slope: Kemiringan segmen ST pada saat puncak latihan (Skala 0-2).</p></li>
-<li><p>Ca: Jumlah pembuluh darah utama (0-3) yang diwarnai dengan fluoroskopi.</p></li>
-<li><p>Thal: Hasil tes darah thalasemia (3 = Normal, 6 = Cacat tetap, 7 = Cacat yang dapat disembuhkan).</p></li>
-<li><p>Target: Status penyakit jantung pasien.
-0: Sehat (Tidak ada risiko/hasil negatif).
-1: Sakit (Terindikasi penyakit jantung/hasil positif).</p></li>
+<li><p>PlayTennis: Yes, No.</p></li>
 </ul>
-<p>berikut adalah sumber datanya: <a class="reference external" href="https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset">https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset</a></p>
-</section>
-<section id="metodologi">
-<h3>Metodologi<a class="headerlink" href="#metodologi" title="Permalink to this heading">#</a></h3>
-<p><img alt="image" src="metodologi.png" /></p>
-<section id="input-data">
-<h4>1. Input Data<a class="headerlink" href="#input-data" title="Permalink to this heading">#</a></h4>
-<p>membaca file melalui Excel Reader</p>
-</section>
-<section id="pre-processing">
-<h4>2. Pre-processing<a class="headerlink" href="#pre-processing" title="Permalink to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>Information Gain: Mengukur efektivitas suatu atribut dalam mengklasifikasikan data.</p></li>
+<li><p>Split Info: Nilai yang digunakan untuk menghambat atribut yang memiliki banyak nilai unik agar tidak mendominasi hasil.</p></li>
+<li><p>Gain Ratio: Hasil bagi antara Information Gain dan Split Info. Atribut dengan Gain Ratio tertinggi akan dipilih sebagai simpul (node) pemisah.</p></li>
+</ol>
+<section id="implementasi-knime">
+<h2>Implementasi KNIME<a class="headerlink" href="#implementasi-knime" title="Permalink to this heading">#</a></h2>
+<p><img alt="gain1" src="_images/gain1.png" /></p>
 <ul class="simple">
-<li><p>Number to Srting : Mengubah kolom target menjadi tipe data nominal agar bisa diklasifikasikan.</p></li>
-<li><p>Normalizer : Melakukan standarisasi data numerik ke skala 0-1 untuk menghindari bias perbedaan satuan.</p></li>
+<li><p>Excel Reader: Digunakan untuk membaca file dataset. Pastikan baris nama kolom sudah diatur dengan benar agar terbaca sebagai header.</p></li>
+<li><p>Table Partitioner: Membagi data menjadi data latih (training) dan data uji (testing) untuk validasi model.</p></li>
+<li><p>Color Manager: Memberikan label warna pada kolom target PlayTennis. Hal ini memudahkan identifikasi visual pada pohon akar (misal: coklat untuk ‘yes’ dan hijau untuk ‘no’).</p></li>
+<li><p>Decision Tree Learner:</p>
+<ul>
+<li><p>Class Column: PlayTennis.</p></li>
+<li><p>Quality Measure: Wajib pilih Gain Ratio.</p></li>
+<li><p>Pruning: Dimatikan agar pohon tampil secara detail (pohon akar lengkap).</p></li>
+</ul>
+</li>
+<li><p>Decision Tree Predictor: Menerapkan model yang sudah dilatih ke data uji.</p></li>
+<li><p>Scorer: Menghitung tingkat akurasi model untuk melihat seberapa tepat prediksi yang dihasilkan.</p></li>
 </ul>
 </section>
-<section id="data-splitting">
-<h4>3. Data Splitting<a class="headerlink" href="#data-splitting" title="Permalink to this heading">#</a></h4>
-<p>Membagi data menggunakan Table Partitioner dengan rasio 80% (Data Latih) dan 20% (Data Uji).</p>
-</section>
-<section id="modeling">
-<h4>4. Modeling<a class="headerlink" href="#modeling" title="Permalink to this heading">#</a></h4>
-<p>Melatih model menggunakan Naive Bayes Learner dan melakukan prediksi dengan Naive Bayes Predictor.</p>
-</section>
-</section>
-<section id="visualisasi-data-scatter-plot">
-<h3>Visualisasi Data (Scatter Plot)<a class="headerlink" href="#visualisasi-data-scatter-plot" title="Permalink to this heading">#</a></h3>
-<p><img alt="scatterplot" src="_images/scatterplot.png" /></p>
+<section id="hasil-dan-visualisasi-decition-tree">
+<h2>Hasil dan Visualisasi Decition Tree<a class="headerlink" href="#hasil-dan-visualisasi-decition-tree" title="Permalink to this heading">#</a></h2>
+<p><img alt="gain2" src="_images/gain2.png" /></p>
 <ul class="simple">
-<li><p>Sumbu X (Horizontal): age (Usia).</p></li>
-<li><p>Sumbu Y (Vertikal): chol (Kolesterol).</p></li>
-<li><p>Titik Merah: Mewakili Target 0 (Pasien Sehat / Tidak ada risiko penyakit jantung).</p></li>
-<li><p>Titik Biru: Mewakili Target 1 (Pasien Sakit / Ada risiko penyakit jantung).</p></li>
+<li><p>Akar Utama (Root Node): Atribut Humidity (teridentifikasi sebagai empty_E) terpilih sebagai pemisah utama karena memiliki Gain Ratio tertinggi.</p></li>
+<li><p>Distribusi Data: Dari total 12 data yang masuk ke model, 7 data (58.3%) menghasilkan keputusan Yes dan 4 data (33.3%) menghasilkan keputusan No.</p></li>
+<li><p>Logika Percabangan:</p>
+<ul>
+<li><p>Jika Humidity = Normal: Mayoritas data (83.3%) mengarah pada keputusan Yes.</p></li>
+<li><p>Jika Humidity = High: Mayoritas data (60%) mengarah pada keputusan No.</p></li>
 </ul>
-<p><strong>Distribusi Usia:</strong> Pasien yang sakit (biru) terlihat mulai muncul secara signifikan sejak usia 30-an ke atas, namun kepadatan tertinggi berada di rentang usia 40 hingga 60 tahun.
-<strong>Variabel Kolesterol:</strong> Terdapat satu titik biru (sakit) yang merupakan outlier dengan kadar kolesterol sangat tinggi (di atas 540) pada usia sekitar 67 tahun. Sementara itu, banyak titik merah (sehat) yang memiliki kadar kolesterol tinggi (240-300), yang menunjukkan bahwa kolesterol bukan satu-satunya faktor penentu penyakit jantung.
-<strong>Pola Data:</strong> Karena titik merah dan biru saling bertumpukan di area tengah (kolesterol 200-300 dan usia 40-60), hal ini memperkuat alasan mengapa kita membutuhkan algoritma Naive Bayes. Algoritma ini tidak hanya melihat dua variabel ini saja, tapi mengombinasikan belasan variabel lain untuk mendapatkan probabilitas yang lebih akurat.</p>
+</li>
+</ul>
 </section>
-<section id="hasil">
-<h3>Hasil<a class="headerlink" href="#hasil" title="Permalink to this heading">#</a></h3>
-<section id="confusion-matrix-detail-prediksi">
-<h4>Confusion Matrix (Detail Prediksi)<a class="headerlink" href="#confusion-matrix-detail-prediksi" title="Permalink to this heading">#</a></h4>
-<p><img alt="confusionmatrix" src="_images/confusionmatrix.png" /></p>
+<section id="evaluasi-model-scorer">
+<h2>Evaluasi Model Scorer<a class="headerlink" href="#evaluasi-model-scorer" title="Permalink to this heading">#</a></h2>
+<p><img alt="gain3" src="_images/gain3.png" /></p>
 <ul class="simple">
-<li><p>Akurasi (Accuracy): 82,439%. Ini berarti dari 100 pasien, model berhasil menebak dengan benar sekitar 82 orang.</p></li>
-<li><p>Jumlah Benar (Correct Classified): 169 data.</p></li>
-<li><p>Jumlah Salah (Wrong Classified): 36 data.  - Tingkat Kesalahan (Error): 17,561%.</p></li>
-<li><p>Cohen’s Kappa: 0,648 (Menunjukkan tingkat kesepakatan yang kuat antara prediksi dan kenyataan, di atas faktor kebetulan).</p></li>
+<li><p>Correct Classified: 1 (Satu data berhasil ditebak dengan benar)</p></li>
+<li><p>Wrong Classified: 1 (Satu data gagal ditebak dengan benar).</p></li>
+<li><p>Accuracy: 50% (Model memiliki tingkat ketepatan sebesar 50% pada data uji).</p></li>
+<li><p>Error: 50% (Tingkat kesalahan prediksi model adalah 50%).</p></li>
 </ul>
-<p>Model klasifikasi ini memiliki kemampuan yang sangat baik dalam mendeteksi pasien yang sakit jantung (90 dari 105 pasien sakit berhasil ditemukan). Angka akurasi sebesar 82,4% menunjukkan bahwa algoritma Naive Bayes, didukung dengan proses normalisasi data, sangat efektif untuk diimplementasikan pada dataset medis ini sebagai alat bantu diagnosa awal.</p>
-</section>
-</section>
+<p>Tabel ini menunjukkan perbandingan antara nilai asli (Actual) dengan hasil prediksi (Prediction):</p>
+<ul class="simple">
+<li><p>True Negative: Terdapat 1 data “No” yang diprediksi dengan benar sebagai “No”.</p></li>
+<li><p>False Negative: Terdapat 1 data “Yes” yang salah diprediksi menjadi “No”.</p></li>
+</ul>
 </section>
 </section>
 
@@ -529,22 +609,13 @@ Tujuannya adalah untuk menganalisis faktor-faktor medis yang berkontribusi terha
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="data_preparation_knn.html"
+       href="naive_bayes.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">Naive Bayes</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="gain_ratio.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Implementasi Klasifikasi Play Tennis menggunakan KNIME</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -562,22 +633,9 @@ Tujuannya adalah untuk menganalisis faktor-faktor medis yang berkontribusi terha
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-naive-bayes-untuk-prediksi-penyakit-jantung-menggunakan-knime">Implementasi Naive Bayes untuk Prediksi Penyakit Jantung Menggunakan KNIME</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-klinis-fitur-pendukung">Atribut Klinis (Fitur Pendukung)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metodologi">Metodologi</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#input-data">1. Input Data</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-processing">2. Pre-processing</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-splitting">3. Data Splitting</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling">4. Modeling</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data-scatter-plot">Visualisasi Data (Scatter Plot)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil">Hasil</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix-detail-prediksi">Confusion Matrix (Detail Prediksi)</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-knime">Implementasi KNIME</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-dan-visualisasi-decition-tree">Hasil dan Visualisasi Decition Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-model-scorer">Evaluasi Model Scorer</a></li>
 </ul>
   </nav></div>
 
