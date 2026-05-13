@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>240411100147 Intan Resti Haslindawati &#8212; My sample book</title>
+    <title>Random Forest &#8212; My sample book</title>
   
   
   
@@ -62,10 +62,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'random_forest';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Business Understanding" href="business.html" />
+    <link rel="prev" title="Gain Ratio" href="gain_ratio.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -128,8 +128,6 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -148,7 +146,7 @@ const thebe_selector_output = ".output, .cell_output"
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="intro.html">
   
   
   
@@ -168,13 +166,13 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     240411100147 Intan Resti Haslindawati
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="business.html">Business Understanding</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="data_understanding.html">Data Understanding</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="eksplorasi_data.html">Eksplorasi Data</a></li>
@@ -191,7 +189,7 @@ const thebe_selector_output = ".output, .cell_output"
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="naive_bayes.html">Naive Bayes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gain_ratio.html">Gain Ratio</a></li>
-<li class="toctree-l1"><a class="reference internal" href="random_forest.html">Random Forest</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Random Forest</a></li>
 </ul>
 
     </div>
@@ -263,7 +261,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Frandom_forest.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -293,7 +291,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/intro.md" target="_blank"
+      <li><a href="_sources/random_forest.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -377,7 +375,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>240411100147 Intan Resti Haslindawati</h1>
+    <h1>Random Forest</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -387,7 +385,25 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identitas">Identitas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-klasifikasi-data-penyakit-jantung-menggunakan-metode-random-forest-dan-naive-bayes-pada-knime">Analisis Klasifikasi Data Penyakit Jantung menggunakan metode Random Forest dan Naive Bayes pada KNIME</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metodologi">1. Metodologi</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-acquisition-input-data">1. Data Acquisition (Input Data)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data-transformation">2.Preprocessing &amp; Data Transformation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-visualization-color-manager">3. Data Visualization (Color Manager)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-splitting-partitioning">4. Data Splitting (Partitioning)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#model-training-learner">5. Model Training (Learner)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#model-prediction">6. Model Prediction</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-dan-analisis">Hasil dan Analisis</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scorer-naive-bayes">Scorer Naive Bayes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scorer-random-forest">Scorer Random Forest</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-statistic">Atribut Statistic</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-view-random-forest">Tree View Random Forest</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -399,25 +415,123 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="intan-resti-haslindawati">
-<h1>240411100147 Intan Resti Haslindawati<a class="headerlink" href="#intan-resti-haslindawati" title="Permalink to this heading">#</a></h1>
-<section id="identitas">
-<h2>Identitas<a class="headerlink" href="#identitas" title="Permalink to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="random-forest">
+<h1>Random Forest<a class="headerlink" href="#random-forest" title="Permalink to this heading">#</a></h1>
+<section id="analisis-klasifikasi-data-penyakit-jantung-menggunakan-metode-random-forest-dan-naive-bayes-pada-knime">
+<h2>Analisis Klasifikasi Data Penyakit Jantung menggunakan metode Random Forest dan Naive Bayes pada KNIME<a class="headerlink" href="#analisis-klasifikasi-data-penyakit-jantung-menggunakan-metode-random-forest-dan-naive-bayes-pada-knime" title="Permalink to this heading">#</a></h2>
+<p>Random Forest adalah algoritma pembelajaran mesin (Machine Learning) yang menggunakan metode Ensemble Learning. Algoritma ini bekerja dengan membangun banyak Decision Tree (Pohon Keputusan) secara acak pada saat masa pelatihan data (training). Hasil prediksi akhir diambil berdasarkan suara terbanyak dari seluruh pohon yang terbentuk. Jika mayoritas pohon memprediksi “Sakit”, maka hasil akhirnya adalah “Sakit”.</p>
+<p>sumber data : <a class="reference external" href="https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset">https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset</a></p>
+<section id="metodologi">
+<h3>1. Metodologi<a class="headerlink" href="#metodologi" title="Permalink to this heading">#</a></h3>
+<p><img alt="rdm1" src="_images/rdm1.png" />
+Eksperimen ini menggunakan alur kerja data mining yang terstruktur untuk mengklasifikasi risiko penyakit jantung. Metodologi yang diterapkan dibagi menjadi beberapa tahapan utama sebagai berikut:</p>
+<section id="data-acquisition-input-data">
+<h4>1. Data Acquisition (Input Data)<a class="headerlink" href="#data-acquisition-input-data" title="Permalink to this heading">#</a></h4>
+<p>ahap awal dimulai dengan membaca dataset menggunakan node Excel Reader. Data yang digunakan adalah heart.xlsx yang berisi rekam medis pasien seperti usia, jenis nyeri dada, tingkat kolesterol, dan status penyakit jantung (target).</p>
+</section>
+<section id="preprocessing-data-transformation">
+<h4>2.Preprocessing &amp; Data Transformation<a class="headerlink" href="#preprocessing-data-transformation" title="Permalink to this heading">#</a></h4>
+<p>Karena kolom target berisi angka (0 dan 1) sementara algoritma klasifikasi membutuhkan label kategori, maka dilakukan transformasi data:</p>
 <ul class="simple">
-<li><p>Nama : Intan Resti Haslindawati</p></li>
-<li><p>NIM : 240411100147</p></li>
-<li><p>Kelas : Penambangan Data IF4A</p></li>
+<li><p>Number To String: Digunakan untuk mengubah tipe data kolom target dari numerik menjadi string (teks). Tanpa tahap ini, algoritma klasifikasi tidak dapat berjalan karena akan dianggap sebagai data kontinu.</p></li>
+<li><p>Domain Calculator: Digunakan untuk memperbarui nilai domain pada dataset agar label “0” dan “1” terdefinisi dengan jelas sebagai kategori yang akan diprediksi.</p></li>
 </ul>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="business.html">Business Understanding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data_understanding.html">Data Understanding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data_preparation.html">Data Preparation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="naive_bayes.html">Naive Bayes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gain_ratio.html">Gain Ratio</a></li>
-<li class="toctree-l1"><a class="reference internal" href="random_forest.html">Random Forest</a></li>
+</section>
+<section id="data-visualization-color-manager">
+<h4>3. Data Visualization (Color Manager)<a class="headerlink" href="#data-visualization-color-manager" title="Permalink to this heading">#</a></h4>
+<p>Node Color Manager diterapkan untuk memberikan label warna yang berbeda pada setiap kelas (misalnya: warna biru untuk label 0 dan warna merah untuk label 1). Hal ini memudahkan analisis visual pada tahap evaluasi.</p>
+</section>
+<section id="data-splitting-partitioning">
+<h4>4. Data Splitting (Partitioning)<a class="headerlink" href="#data-splitting-partitioning" title="Permalink to this heading">#</a></h4>
+<p>Dataset dibagi menjadi dua bagian independen menggunakan node Table Partitioner:</p>
+<ul class="simple">
+<li><p>Training Data (80%): Digunakan untuk melatih model agar dapat mengenali pola dalam data.</p></li>
+<li><p>Testing Data (20%): Digunakan untuk menguji performa model dengan data yang belum pernah dilihat sebelumnya guna menjamin objektivitas hasil.</p></li>
 </ul>
+</section>
+<section id="model-training-learner">
+<h4>5. Model Training (Learner)<a class="headerlink" href="#model-training-learner" title="Permalink to this heading">#</a></h4>
+<p>Pada tahap ini, diterapkan dua algoritma Machine Learning yang berbeda untuk dibandingkan kinerjanya:</p>
+<ul class="simple">
+<li><p>Naive Bayes Learner: Mempelajari pola berdasarkan teori probabilitas.</p></li>
+<li><p>Random Forest Learner: Mempelajari pola dengan membangun sekumpulan pohon keputusan (Ensemble Learning) secara acak untuk meningkatkan stabilitas prediksi.</p></li>
+</ul>
+</section>
+<section id="model-prediction">
+<h4>6. Model Prediction<a class="headerlink" href="#model-prediction" title="Permalink to this heading">#</a></h4>
+<p>Predictor: Node Naive Bayes Predictor dan Random Forest Predictor menerapkan model yang sudah dilatih ke dalam data testing (20%).</p>
+</section>
+</section>
+<section id="hasil-dan-analisis">
+<h3>Hasil dan Analisis<a class="headerlink" href="#hasil-dan-analisis" title="Permalink to this heading">#</a></h3>
+<section id="scorer-naive-bayes">
+<h4>Scorer Naive Bayes<a class="headerlink" href="#scorer-naive-bayes" title="Permalink to this heading">#</a></h4>
+<p><img alt="rdm2" src="_images/rdm2.png" />
+Model Naive Bayes menunjukkan performa sebagai berikut:</p>
+<ul class="simple">
+<li><p>Akurasi: 83.415%</p></li>
+<li><p>Correct Classified: 171 data</p></li>
+<li><p>Wrong Classified: 34 data</p></li>
+<li><p>Analisis: Meskipun performanya sudah masuk kategori sangat baik, Naive Bayes masih memiliki tingkat kesalahan sebesar 16.585%. Hal ini dikarenakan keterbatasan algoritma yang mengasumsikan setiap gejala medis berdiri sendiri (independen).</p></li>
+</ul>
+</section>
+<section id="scorer-random-forest">
+<h4>Scorer Random Forest<a class="headerlink" href="#scorer-random-forest" title="Permalink to this heading">#</a></h4>
+<p><img alt="rdm3" src="_images/rdm3.png" />
+Berdasarkan pengujian pada data uji (20% dari total dataset), model Random Forest menunjukkan performa yang sempurna:</p>
+<ul class="simple">
+<li><p>Akurasi: 100%</p></li>
+<li><p>Correct Classified: 205 data</p></li>
+<li><p>Wrong Classified: 0 data</p></li>
+<li><p>Analisis: Model berhasil mengklasifikasikan seluruh data uji tanpa kesalahan sedikit pun. Hal ini menunjukkan bahwa gabungan banyak pohon keputusan (ensemble) pada Random Forest mampu menangkap seluruh pola fitur medis dalam dataset dengan sangat akurat.</p></li>
+</ul>
+<p><strong>Perbandingan</strong>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Metriks</p></th>
+<th class="head text-center"><p>Naive Bayes</p></th>
+<th class="head text-center"><p>Random Forest</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Accuracy</strong></p></td>
+<td class="text-center"><p>83.415%</p></td>
+<td class="text-center"><p><strong>100%</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Correct Classified</strong></p></td>
+<td class="text-center"><p>171</p></td>
+<td class="text-center"><p><strong>205</strong></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>Wrong Classified</strong></p></td>
+<td class="text-center"><p>34</p></td>
+<td class="text-center"><p><strong>0</strong></p></td>
+</tr>
+</tbody>
+</table>
 </div>
+<p>Random Forest jauh lebih unggul dibandingkan Naive Bayes. Akurasi 100% pada Random Forest membuktikan bahwa metode pohon keputusan jamak sangat efektif untuk kasus klasifikasi penyakit jantung ini, sedangkan Naive Bayes mengalami kesulitan pada beberapa data yang memiliki keterkaitan antar variabel medis.</p>
+</section>
+<section id="atribut-statistic">
+<h4>Atribut Statistic<a class="headerlink" href="#atribut-statistic" title="Permalink to this heading">#</a></h4>
+<p><img alt="rdm5_1" src="_images/rdm5_1.png" />
+<img alt="rdm5_2" src="_images/rdm5_2.png" /></p>
+</section>
+<section id="tree-view-random-forest">
+<h4>Tree View Random Forest<a class="headerlink" href="#tree-view-random-forest" title="Permalink to this heading">#</a></h4>
+<p><img alt="rdm4" src="_images/rdm4.png" />
+Gambar ini adalah visualisasi dari salah satu pohon keputusan di dalam model Random Forest. Ini menjelaskan bagaimana mesin “berpikir” dalam mendiagnosa pasien:</p>
+<ul class="simple">
+<li><p>Akar Masalah (Root): Variabel thalach (detak jantung maksimal) menjadi variabel penentu utama di pohon ini.</p></li>
+<li><p>Logika Percabangan:</p>
+<ul>
+<li><p>Jika thalach &lt;= 147.5: Pasien diarahkan ke cabang kiri dan diprediksi masuk kategori 0 (Sehat) dengan keyakinan 100%.</p></li>
+<li><p>Jika thalach &gt; 147.5: Pasien diarahkan ke cabang kanan dan diprediksi masuk kategori 1 (Sakit) dengan keyakinan 100%.</p></li>
+</ul>
+</li>
+<li><p>Hasil Akhir (Leaf Nodes): Karena pada kotak hasil akhir tertulis 100%, ini menunjukkan bahwa variabel thalach sangat efektif dalam membedakan antara pasien sehat dan sakit pada dataset ini, yang menjelaskan mengapa akurasi modelmu bisa mencapai 100%.</p></li>
+</ul>
+</section>
+</section>
 </section>
 </section>
 
@@ -451,14 +565,14 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="right-next"
-       href="business.html"
-       title="next page">
+    <a class="left-prev"
+       href="gain_ratio.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Business Understanding</p>
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Gain Ratio</p>
       </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -476,7 +590,25 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identitas">Identitas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-klasifikasi-data-penyakit-jantung-menggunakan-metode-random-forest-dan-naive-bayes-pada-knime">Analisis Klasifikasi Data Penyakit Jantung menggunakan metode Random Forest dan Naive Bayes pada KNIME</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metodologi">1. Metodologi</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-acquisition-input-data">1. Data Acquisition (Input Data)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data-transformation">2.Preprocessing &amp; Data Transformation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-visualization-color-manager">3. Data Visualization (Color Manager)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-splitting-partitioning">4. Data Splitting (Partitioning)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#model-training-learner">5. Model Training (Learner)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#model-prediction">6. Model Prediction</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-dan-analisis">Hasil dan Analisis</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scorer-naive-bayes">Scorer Naive Bayes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scorer-random-forest">Scorer Random Forest</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-statistic">Atribut Statistic</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tree-view-random-forest">Tree View Random Forest</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
