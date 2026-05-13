@@ -1,4 +1,5 @@
-# Implementasi Klasifikasi Play Tennis menggunakan KNIME
+# Gain Ratio
+## Implementasi Gain Ratio Klasifikasi Play Tennis menggunakan KNIME
 
 Data yang digunakan adalah data gain ratio.xlsx
 | Day | Outlook  | Temp | Humidity | Wind  | PlayTennis |

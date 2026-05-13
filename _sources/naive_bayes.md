@@ -29,7 +29,7 @@ Tujuannya adalah untuk menganalisis faktor-faktor medis yang berkontribusi terha
 berikut adalah sumber datanya: https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset 
 
 #### Metodologi
-![image](metodologi.png)
+![metodologi](images/metodologi.png)
 ###### 1. Input Data
 membaca file melalui Excel Reader
 ###### 2. Pre-processing 
