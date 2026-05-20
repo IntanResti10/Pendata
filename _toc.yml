@@ -18,4 +18,5 @@ chapters:
   - file: naive_bayes
   - file: gain_ratio
   - file: random_forest
+  - file: regresi_linear
   
