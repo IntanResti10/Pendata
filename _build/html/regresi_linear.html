@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; My sample book</title>
+    <title>Regresi Linear &#8212; My sample book</title>
   
   
   
@@ -62,6 +62,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'regresi_linear';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -172,7 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="business.html">Business Understanding</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="data_understanding.html">Data Understanding</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="eksplorasi_data.html">Eksplorasi Data</a></li>
@@ -190,6 +192,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="naive_bayes.html">Naive Bayes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gain_ratio.html">Gain Ratio</a></li>
 <li class="toctree-l1"><a class="reference internal" href="random_forest.html">Random Forest</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Regresi Linear</a></li>
 </ul>
 
     </div>
@@ -375,7 +378,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Regresi Linear</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -384,9 +387,26 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-data-menggunakan-regresi-linear">Analisis Data Menggunakan Regresi Linear</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-nilai-koefisien">1. Menghitung Nilai Koefisien</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menyusun-matriks-awal-x-dan-y">1. Menyusun Matriks Awal (<span class="math notranslate nohighlight">\(X\)</span> dan <span class="math notranslate nohighlight">\(Y\)</span>)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#transpose-matriks-x-t">2. Transpose Matriks (<span class="math notranslate nohighlight">\(X^T\)</span>)\</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-perkalian-matriks-x-t-x">3. Menghitung Perkalian Matriks (<span class="math notranslate nohighlight">\(X^T X\)</span>)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-invers-matriks-x-t-x-1">4. Menghitung Invers Matriks <span class="math notranslate nohighlight">\((X^T X)^{-1}\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-nilai-koefisien-hat-beta">6. Menghitung Nilai Koefisien <span class="math notranslate nohighlight">\(\hat{\beta}\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-persamaan-garis-regresi-linier">7. Hasil Persamaan Garis Regresi Linier</a></li>
 </ul>
-
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#program-menghitung-koefisien-regresi-dengan-libarary-dari-sklearn-from-sklearn-linear-model-import-linearregression">2. Program menghitung koefisien regresi dengan  libarary dari sklearn from sklearn.linear_model import LinearRegression:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#output-program">Output Program</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metode-analitik-matriks">Metode Analitik Matriks</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Output Program</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
             </nav>
         </div>
     </div>
@@ -397,7 +417,143 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  
+  <section class="tex2jax_ignore mathjax_ignore" id="regresi-linear">
+<h1>Regresi Linear<a class="headerlink" href="#regresi-linear" title="Permalink to this heading">#</a></h1>
+<section id="analisis-data-menggunakan-regresi-linear">
+<h2>Analisis Data Menggunakan Regresi Linear<a class="headerlink" href="#analisis-data-menggunakan-regresi-linear" title="Permalink to this heading">#</a></h2>
+<p>Data :
+A = (2,2)
+B = (4,3)
+C = (5,5)
+D = (3,4)
+E = (3,3)
+F = (4,5)
+G = (5,6)</p>
+<section id="menghitung-nilai-koefisien">
+<h3>1. Menghitung Nilai Koefisien<a class="headerlink" href="#menghitung-nilai-koefisien" title="Permalink to this heading">#</a></h3>
+<p>menghitung nilai koefisien intersep (<span class="math notranslate nohighlight">\(\beta_0\)</span>) dan kemiringan (<span class="math notranslate nohighlight">\(\beta_1\)</span>) menggunakan rumus persamaan normal:
+<img alt="rumusregresi1" src="https://hackmd.io/_uploads/SyuBHqckze.png" /></p>
+<section id="menyusun-matriks-awal-x-dan-y">
+<h4>1. Menyusun Matriks Awal (<span class="math notranslate nohighlight">\(X\)</span> dan <span class="math notranslate nohighlight">\(Y\)</span>)<a class="headerlink" href="#menyusun-matriks-awal-x-dan-y" title="Permalink to this heading">#</a></h4>
+<p>Sesuai aturan perkalian matriks untuk regresi, kita menambahkan kolom dummy berupa angka 1 di sebelah kiri nilai <span class="math notranslate nohighlight">\(X\)</span> asli untuk mengakomodasi nilai intersep (<span class="math notranslate nohighlight">\(\beta_0\)</span>).
+$<span class="math notranslate nohighlight">\(X = \begin{bmatrix} 1 &amp; 2 \\ 1 &amp; 4 \\ 1 &amp; 5 \\ 1 &amp; 3 \\ 1 &amp; 3 \\ 1 &amp; 4 \\ 1 &amp; 5 \end{bmatrix}, \quad Y = \begin{bmatrix} 2 \\ 3 \\ 5 \\ 4 \\ 3 \\ 5 \\ 6 \end{bmatrix}\)</span>$</p>
+</section>
+<section id="transpose-matriks-x-t">
+<h4>2. Transpose Matriks (<span class="math notranslate nohighlight">\(X^T\)</span>)\<a class="headerlink" href="#transpose-matriks-x-t" title="Permalink to this heading">#</a></h4>
+<p>Membalik baris matriks <span class="math notranslate nohighlight">\(X\)</span> menjadi kolom:
+$<span class="math notranslate nohighlight">\(X^T = \begin{bmatrix} 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\ 2 &amp; 4 &amp; 5 &amp; 3 &amp; 3 &amp; 4 &amp; 5 \end{bmatrix}\)</span></p>
+</section>
+<section id="menghitung-perkalian-matriks-x-t-x">
+<h4>3. Menghitung Perkalian Matriks (<span class="math notranslate nohighlight">\(X^T X\)</span>)<a class="headerlink" href="#menghitung-perkalian-matriks-x-t-x" title="Permalink to this heading">#</a></h4>
+<p>Kalikan matriks <span class="math notranslate nohighlight">\(X^T\)</span> (ukuran <span class="math notranslate nohighlight">\(2 \times 7\)</span>) dengan matriks <span class="math notranslate nohighlight">\(X\)</span> (ukuran <span class="math notranslate nohighlight">\(7 \times 2\)</span>):
+$<span class="math notranslate nohighlight">\(X^T X = \begin{bmatrix} 1+1+1+1+1+1+1 &amp; 2+4+5+3+3+4+5 \\ 2+4+5+3+3+4+5 &amp; 2^2+4^2+5^2+3^2+3^2+4^2+5^2 \end{bmatrix}\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}X^T X = \begin{bmatrix} 7 &amp; 26 \\ 26 &amp; 104 \end{bmatrix}\end{split}\]</div>
+</section>
+<section id="menghitung-invers-matriks-x-t-x-1">
+<h4>4. Menghitung Invers Matriks <span class="math notranslate nohighlight">\((X^T X)^{-1}\)</span><a class="headerlink" href="#menghitung-invers-matriks-x-t-x-1" title="Permalink to this heading">#</a></h4>
+<p>Untuk mencari invers dari matriks <span class="math notranslate nohighlight">\(2 \times 2\)</span>, rumusnya adalah menukar posisi elemen diagonal utama, memberi tanda negatif pada diagonal sekunder, lalu dibagi dengan determinan.</p>
+<ul class="simple">
+<li><p>Hitung Determinan (det):
+$<span class="math notranslate nohighlight">\(\text{det} = (7 \times 104) - (26 \times 26)\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(\text{det} = 728 - 676 = 52\)</span>$</p></li>
+<li><p>Hitung Invers:
+$<span class="math notranslate nohighlight">\((X^T X)^{-1} = \frac{1}{52} \begin{bmatrix} 104 &amp; -26 \\ -26 &amp; 7 \end{bmatrix} = \begin{bmatrix} \frac{104}{52} &amp; -\frac{26}{52} \\ -\frac{26}{52} &amp; \frac{7}{52} \end{bmatrix} = \begin{bmatrix} 2 &amp; -0.5 \\ -0.5 &amp; \frac{7}{52} \end{bmatrix}\)</span>$</p></li>
+</ul>
+<ol class="arabic simple" start="5">
+<li><p>Menghitung Perkalian Matriks (<span class="math notranslate nohighlight">\(X^T Y\)</span>)kalikan matriks <span class="math notranslate nohighlight">\(X^T\)</span> dengan vektor target <span class="math notranslate nohighlight">\(Y\)</span>:
+$<span class="math notranslate nohighlight">\(X^T Y = \begin{bmatrix} 2+3+5+4+3+5+6 \\ (2\times2)+(4\times3)+(5\times5)+(3\times4)+(3\times3)+(4\times5)+(5\times6) \end{bmatrix}\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(X^T Y = \begin{bmatrix} 28 \\ 4+12+25+12+9+20+30 \end{bmatrix} = \begin{bmatrix} 28 \\ 112 \end{bmatrix}\)</span>$</p></li>
+</ol>
+</section>
+<section id="menghitung-nilai-koefisien-hat-beta">
+<h4>6. Menghitung Nilai Koefisien <span class="math notranslate nohighlight">\(\hat{\beta}\)</span><a class="headerlink" href="#menghitung-nilai-koefisien-hat-beta" title="Permalink to this heading">#</a></h4>
+<p>Sekarang kita kalikan hasil invers pada Langkah 4 dengan hasil perkalian pada Langkah 5:
+$<span class="math notranslate nohighlight">\(\hat{\beta} = \begin{bmatrix} 2 &amp; -0.5 \\ -0.5 &amp; \frac{7}{52} \end{bmatrix} \begin{bmatrix} 28 \\ 112 \end{bmatrix}\)</span>$</p>
+<ul class="simple">
+<li><p>Mencari Intercept (<span class="math notranslate nohighlight">\(\beta_0\)</span>):
+$<span class="math notranslate nohighlight">\(\beta_0 = (2 \times 28) + (-0.5 \times 112) = 56 - 56 = \mathbf{0}\)</span>$</p></li>
+<li><p>Mencari Slope (<span class="math notranslate nohighlight">\(\beta_1\)</span>):
+$<span class="math notranslate nohighlight">\(\beta_1 = (-0.5 \times 28) + \left(\frac{7}{52} \times 112\right) = -14 + \frac{784}{52} = -14 + 15.0769 = \mathbf{1.0769}\)</span>$</p></li>
+</ul>
+</section>
+<section id="hasil-persamaan-garis-regresi-linier">
+<h4>7. Hasil Persamaan Garis Regresi Linier<a class="headerlink" href="#hasil-persamaan-garis-regresi-linier" title="Permalink to this heading">#</a></h4>
+<p>Berdasarkan perhitungan analitik dari data titik GeoGebra Anda, didapatkan model persamaan garis lurus terbaiknya adalah:
+$<span class="math notranslate nohighlight">\(Y = 0 + 1.0769 \cdot X \quad \Rightarrow \quad Y = 1.0769 \cdot X\)</span>$</p>
+</section>
+</section>
+<section id="program-menghitung-koefisien-regresi-dengan-libarary-dari-sklearn-from-sklearn-linear-model-import-linearregression">
+<h3>2. Program menghitung koefisien regresi dengan  libarary dari sklearn from sklearn.linear_model import LinearRegression:<a class="headerlink" href="#program-menghitung-koefisien-regresi-dengan-libarary-dari-sklearn-from-sklearn-linear-model-import-linearregression" title="Permalink to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">]])</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+
+<span class="n">b0_sklearn</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">intercept_</span>  
+<span class="n">b1_sklearn</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>    
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; METODE SCIKIT-LEARN &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Intercept (b0) : </span><span class="si">{</span><span class="n">b0_sklearn</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Slope (b1)     : </span><span class="si">{</span><span class="n">b1_sklearn</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Persamaan      : Y = </span><span class="si">{</span><span class="n">b0_sklearn</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">b1_sklearn</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> * X</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="output-program">
+<h4>Output Program<a class="headerlink" href="#output-program" title="Permalink to this heading">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">METODE</span> <span class="n">SCIKIT</span><span class="o">-</span><span class="n">LEARN</span>
+<span class="n">Intercept</span> <span class="p">(</span><span class="n">b0</span><span class="p">)</span> <span class="p">:</span> <span class="o">-</span><span class="mf">0.0000</span>
+<span class="n">Slope</span> <span class="p">(</span><span class="n">b1</span><span class="p">)</span>     <span class="p">:</span> <span class="mf">1.0769</span>
+<span class="n">Persamaan</span>      <span class="p">:</span> <span class="n">Y</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.0000</span> <span class="o">+</span> <span class="mf">1.0769</span> <span class="o">*</span> <span class="n">X</span>
+</pre></div>
+</div>
+</section>
+<section id="metode-analitik-matriks">
+<h4>Metode Analitik Matriks<a class="headerlink" href="#metode-analitik-matriks" title="Permalink to this heading">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># 1. Menambahkan kolom bias (angka 1) ke matriks X</span>
+<span class="n">X_bias</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">X</span><span class="p">))</span>
+
+<span class="c1"># 2. Menghitung X Transpose</span>
+<span class="n">X_T</span> <span class="o">=</span> <span class="n">X_bias</span><span class="o">.</span><span class="n">T</span>
+
+<span class="c1"># 3. Menghitung (X^T * X)</span>
+<span class="n">X_T_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X_T</span><span class="p">,</span> <span class="n">X_bias</span><span class="p">)</span>
+
+<span class="c1"># 4. Menghitung Invers dari (X^T * X)</span>
+<span class="n">X_T_X_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">X_T_X</span><span class="p">)</span>
+
+<span class="c1"># 5. Menghitung X^T * Y</span>
+<span class="n">X_T_Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X_T</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+
+<span class="c1"># 6. Menghitung Nilai Koefisien Beta (β)</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X_T_X_inv</span><span class="p">,</span> <span class="n">X_T_Y</span><span class="p">)</span>
+
+<span class="n">b0_analitik</span> <span class="o">=</span> <span class="n">beta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">b1_analitik</span> <span class="o">=</span> <span class="n">beta</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Intercept (b0) : </span><span class="si">{</span><span class="n">b0_analitik</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Slope (b1)     : </span><span class="si">{</span><span class="n">b1_analitik</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Persamaan      : Y = </span><span class="si">{</span><span class="n">b0_analitik</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">b1_analitik</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> * X&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h4>Output Program<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Intercept</span> <span class="p">(</span><span class="n">b0</span><span class="p">)</span> <span class="p">:</span> <span class="mf">0.0000</span>
+<span class="n">Slope</span> <span class="p">(</span><span class="n">b1</span><span class="p">)</span>     <span class="p">:</span> <span class="mf">1.0769</span>
+<span class="n">Persamaan</span>      <span class="p">:</span> <span class="n">Y</span> <span class="o">=</span> <span class="mf">0.0000</span> <span class="o">+</span> <span class="mf">1.0769</span> <span class="o">*</span> <span class="n">X</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -452,9 +608,26 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-data-menggunakan-regresi-linear">Analisis Data Menggunakan Regresi Linear</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-nilai-koefisien">1. Menghitung Nilai Koefisien</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menyusun-matriks-awal-x-dan-y">1. Menyusun Matriks Awal (<span class="math notranslate nohighlight">\(X\)</span> dan <span class="math notranslate nohighlight">\(Y\)</span>)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#transpose-matriks-x-t">2. Transpose Matriks (<span class="math notranslate nohighlight">\(X^T\)</span>)\</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-perkalian-matriks-x-t-x">3. Menghitung Perkalian Matriks (<span class="math notranslate nohighlight">\(X^T X\)</span>)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-invers-matriks-x-t-x-1">4. Menghitung Invers Matriks <span class="math notranslate nohighlight">\((X^T X)^{-1}\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-nilai-koefisien-hat-beta">6. Menghitung Nilai Koefisien <span class="math notranslate nohighlight">\(\hat{\beta}\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-persamaan-garis-regresi-linier">7. Hasil Persamaan Garis Regresi Linier</a></li>
 </ul>
-
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#program-menghitung-koefisien-regresi-dengan-libarary-dari-sklearn-from-sklearn-linear-model-import-linearregression">2. Program menghitung koefisien regresi dengan  libarary dari sklearn from sklearn.linear_model import LinearRegression:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#output-program">Output Program</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#metode-analitik-matriks">Metode Analitik Matriks</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Output Program</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
   </nav></div>
 
 </div></div>
